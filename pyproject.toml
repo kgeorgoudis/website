@@ -4,4 +4,6 @@ version = "0.1.0"
 description = "Blacklines.gr Website"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "pelican[markdown]>=4.11.0.post0",
+]
