@@ -1,0 +1,146 @@
+openapi: 3.0.3
+info:
+  title: Blacklines.gr Static Site Page Contracts
+  version: 1.0.0
+  description: Static page surface for portfolio sections (HTML responses)
+servers:
+  - url: https://blacklines.gr
+    description: Production (Render.com)
+  - url: http://localhost:8100
+    description: Local development (Pelican autoreload)
+paths:
+  /:
+    get:
+      summary: Home and bio
+      responses:
+        '200':
+          description: Home page with hero, bio, navigation, and contact links
+          content:
+            text/html:
+              schema:
+                type: string
+  /devops/:
+    get:
+      summary: DevOps article listing
+      responses:
+        '200':
+          description: List of DevOps posts with title/date/excerpt, pagination, nav
+          content:
+            text/html:
+              schema:
+                type: string
+  /devops/{slug}/:
+    get:
+      summary: DevOps article detail
+      parameters:
+        - in: path
+          name: slug
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Full article with code highlighting and related links
+          content:
+            text/html:
+              schema:
+                type: string
+        '404':
+          description: Article not found
+  /sketchnotes/:
+    get:
+      summary: Sketchnotes gallery grid
+      responses:
+        '200':
+          description: Thumbnail grid with titles, lazy-loaded images, nav links
+          content:
+            text/html:
+              schema:
+                type: string
+  /sketchnotes/{slug}/:
+    get:
+      summary: Sketchnote detail
+      parameters:
+        - in: path
+          name: slug
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Full-size sketch images with captions and next/prev links
+          content:
+            text/html:
+              schema:
+                type: string
+        '404':
+          description: Sketch not found
+  /diy/:
+    get:
+      summary: DIY projects listing
+      responses:
+        '200':
+          description: Project cards with featured image, title, summary
+          content:
+            text/html:
+              schema:
+                type: string
+  /diy/{slug}/:
+    get:
+      summary: DIY project detail
+      parameters:
+        - in: path
+          name: slug
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Multi-image project walkthrough with captions/materials
+          content:
+            text/html:
+              schema:
+                type: string
+        '404':
+          description: Project not found
+  /404.html:
+    get:
+      summary: Custom 404 page
+      responses:
+        '404':
+          description: Branded 404 with navigation back to main sections
+          content:
+            text/html:
+              schema:
+                type: string
+  /feeds/all.atom.xml:
+    get:
+      summary: Site-wide Atom feed
+      responses:
+        '200':
+          description: Atom feed of all posts
+          content:
+            application/atom+xml:
+              schema:
+                type: string
+  /feeds/{category}.atom.xml:
+    get:
+      summary: Category Atom feed
+      parameters:
+        - in: path
+          name: category
+          required: true
+          schema:
+            type: string
+            enum: [devops, sketchnotes, diy]
+      responses:
+        '200':
+          description: Atom feed filtered by category
+          content:
+            application/atom+xml:
+              schema:
+                type: string
+        '404':
+          description: Unknown category
+components: {}
+
