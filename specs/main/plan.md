@@ -43,7 +43,6 @@ Status: PASS (all gates planned; revisit after design to confirm tooling keeps f
 ├── research.md          # Phase 0 output
 ├── data-model.md        # Phase 1 output
 ├── quickstart.md        # Phase 1 output
-├── contracts/           # Phase 1 output
 └── spec.md              # Source specification
 ```
 
@@ -62,7 +61,7 @@ tasks/Make targets use uv # (see quickstart)
 README.md                 # Top-level docs
 ```
 
-**Structure Decision**: Single static-site project under `src/` with Pelican configs and content folders; documentation and contracts live in `.specify/` (mirrored under `specs/main/` for script compatibility); generated output remains ignored.
+**Structure Decision**: Single static-site project under `src/` with Pelican configs and content folders; documentation lives in `.specify/` (mirrored under `specs/main/` for script compatibility); generated output remains ignored.
 
 ## Complexity Tracking
 
