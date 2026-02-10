@@ -5,5 +5,10 @@ description = "Blacklines.gr Website"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "alchemy",
     "pelican[markdown]>=4.11.0.post0",
+    "setuptools>=82.0.0",
 ]
+
+[tool.uv.sources]
+alchemy = { git = "https://github.com/nairobilug/pelican-alchemy.git" }
